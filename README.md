@@ -8,3 +8,6 @@
 06-Control-Flow
 07-Expression and Operator
 08-Functions
+09-StrictMode
+10-Asynchrnous Js
+11-Working with API's

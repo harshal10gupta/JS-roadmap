@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        var x = 10; //(allowed but not recommended in strict mode)
+        let y = 20; // (preferred in strict mode)
+        const z = 30; //(preferred in strict mode)
+
+        // Assigning a value to an undeclared variable throws an error
+        // myVariable = 42;  //Error in strict mode
+
+        // Deleting variables, functions, or function arguments is not allowed
+        var a = 5;
+        // delete a; // Throws an error in strict mode
+    </script>
+</body>
+
+</html>

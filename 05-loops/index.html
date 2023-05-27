@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+
+<body>
+    <script>
+        // for loop
+        for (let i = 1; i <= 5; i++) {
+            console.log("Iteration", i);
+        }
+        console.log("");
+
+        // while loop
+        let j = 1;
+        while (j <= 5) {
+            console.log("Iteration", j);
+            j++;
+        }
+        console.log("");
+
+        // do-while loop
+        let k = 1;
+        do {
+            console.log("Iteration", k);
+            k++;
+        } while (k <= 5);
+        console.log("");
+
+        // for...in loop
+        const person = {
+            name: "John",
+            age: 30,
+            city: "New York"
+        };
+
+        for (let key in person) {
+            console.log(key + ": " + person[key]);
+        }
+        console.log("");
+
+        // for...of loop
+        const numbers = [1, 2, 3, 4, 5];
+        for (let num of numbers) {
+            console.log(num);
+        }
+        console.log("");
+
+        // Array.forEach() loop
+        const colors = ["red", "green", "blue"];
+        colors.forEach(function (color) {
+            console.log(color);
+        });
+
+    </script>
+</body>
+
+</html>
