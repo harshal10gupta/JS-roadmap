@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+    <script>
+        class CustomArray {
+            constructor() {
+                this.length = 0;
+                this.data = {};
+            }
+
+            get(index) {
+                return this.data[index];
+            }
+
+            push(item) {
+                this.data[this.length] = item;
+                this.length++;
+            }
+
+            pop() {
+                if (this.length === 0) {
+                    return undefined;
+                }
+
+                const lastItem = this.data[this.length - 1];
+                delete this.data[this.length - 1];
+                this.length--;
+
+                return lastItem;
+            }
+
+            delete(index) {
+                if (index >= 0 && index < this.length) {
+                    const item = this.data[index];
+                    this.shiftItems(index);
+                    return item;
+                }
+                return undefined;
+            }
+
+            shiftItems(index) {
+                for (let i = index; i < this.length - 1; i++) {
+                    this.data[i] = this.data[i + 1];
+                }
+                delete this.data[this.length - 1];
+                this.length--;
+            }
+        }
+
+        const array = new CustomArray();
+        array.push("a");
+        array.push("b");
+        array.push("c");
+
+        console.log(array.get(1)); 
+
+        console.log(array.length); 
+
+        console.log(array.pop()); 
+
+        console.log(array.length); 
+
+        console.log(array.delete(0)); 
+
+        console.log(array.length); 
+
+    </script>
+</body>
+
+</html>

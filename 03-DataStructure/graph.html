@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+</head>
+
+<body>
+    <script>
+        class Graph {
+            constructor() {
+                this.vertices = [];
+                this.adjacencyList = {};
+            }
+
+            addVertex(vertex) {
+                this.vertices.push(vertex);
+                this.adjacencyList[vertex] = [];
+            }
+
+            addEdge(vertex1, vertex2) {
+                this.adjacencyList[vertex1].push(vertex2);
+                this.adjacencyList[vertex2].push(vertex1);
+            }
+
+            removeVertex(vertex) {
+                const index = this.vertices.indexOf(vertex);
+                if (index !== -1) {
+                    this.vertices.splice(index, 1);
+                    const adjacentVertices = this.adjacencyList[vertex];
+                    for (const adjacentVertex of adjacentVertices) {
+                        this.removeEdge(vertex, adjacentVertex);
+                    }
+                    delete this.adjacencyList[vertex];
+                }
+            }
+
+            removeEdge(vertex1, vertex2) {
+                this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+                    (v) => v !== vertex2
+                );
+                this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+                    (v) => v !== vertex1
+                );
+            }
+
+            depthFirstSearch(startVertex) {
+                const visited = {};
+                const result = [];
+
+                const dfs = (vertex) => {
+                    visited[vertex] = true;
+                    result.push(vertex);
+
+                    const adjacentVertices = this.adjacencyList[vertex];
+                    for (const adjacentVertex of adjacentVertices) {
+                        if (!visited[adjacentVertex]) {
+                            dfs(adjacentVertex);
+                        }
+                    }
+                };
+
+                dfs(startVertex);
+                return result;
+            }
+
+            breadthFirstSearch(startVertex) {
+                const visited = {};
+                const result = [];
+                const queue = [];
+
+                visited[startVertex] = true;
+                queue.push(startVertex);
+
+                while (queue.length) {
+                    const vertex = queue.shift();
+                    result.push(vertex);
+
+                    const adjacentVertices = this.adjacencyList[vertex];
+                    for (const adjacentVertex of adjacentVertices) {
+                        if (!visited[adjacentVertex]) {
+                            visited[adjacentVertex] = true;
+                            queue.push(adjacentVertex);
+                        }
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        // Example usage
+        const graph = new Graph();
+        graph.addVertex('A');
+        graph.addVertex('B');
+        graph.addVertex('C');
+        graph.addVertex('D');
+        graph.addVertex('E');
+        graph.addEdge('A', 'B');
+        graph.addEdge('A', 'C');
+        graph.addEdge('B', 'D');
+        graph.addEdge('C', 'E');
+        console.log(graph.depthFirstSearch('A')); // Output: ['A', 'B', 'D', 'C', 'E']
+        console.log(graph.breadthFirstSearch('A')); // Output: ['A', 'B', 'C', 'D', 'E']
+
+    </script>
+</body>
+
+</html>

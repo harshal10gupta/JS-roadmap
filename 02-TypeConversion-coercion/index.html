@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Conversion and coercion</title>
+</head>
+
+<body>
+    <script>
+        // Type Conversion
+        var numberString = "42";
+        var number = Number(numberString); // converting string to number
+        console.log(number); 
+
+        var booleanString = "true";
+        var boolean = Boolean(booleanString); // converting string to boolean
+        console.log(boolean); // Output: true
+
+        var numberToString = 123;
+        var string = String(numberToString); // converting number to string
+        console.log(string); // Output: "123"
+
+        // Type Coercion
+        var sum = 5 + "10"; // concatenating number and string
+        console.log(sum); // Output: "510"
+
+        var difference = "20" - 10; // subtracting number from string
+        console.log(difference); // Output: 10
+
+        var product = true * 3; // converting boolean to number
+        console.log(product); // Output: 3
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+</head>
+
+<body>
+    <script>
+        class Queue {
+            constructor() {
+                this.queue = [];
+                this.frontIndex = 0;
+                this.rearIndex = 0;
+            }
+
+            enqueue(item) {
+                this.queue[this.rearIndex++] = item;
+            }
+
+            dequeue() {
+                if (this.isEmpty()) {
+                    return "Queue is empty.";
+                }
+                const dequeuedItem = this.queue[this.frontIndex];
+                delete this.queue[this.frontIndex++];
+                return dequeuedItem;
+            }
+
+            front() {
+                if (this.isEmpty()) {
+                    return "Queue is empty.";
+                }
+                return this.queue[this.frontIndex];
+            }
+
+            isEmpty() {
+                return this.frontIndex === this.rearIndex;
+            }
+
+            size() {
+                return this.rearIndex - this.frontIndex;
+            }
+
+            clear() {
+                this.queue = [];
+                this.frontIndex = 0;
+                this.rearIndex = 0;
+            }
+        }
+
+       
+        const queue = new Queue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+
+        console.log(queue.size()); 
+
+        console.log(queue.front()); 
+
+        console.log(queue.dequeue()); 
+
+        console.log(queue.size()); 
+
+        console.log(queue.isEmpty());
+
+        queue.clear();
+
+        console.log(queue.isEmpty()); 
+
+    </script>
+</body>
+
+</html>
